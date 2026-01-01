@@ -1,4 +1,4 @@
-web: gunicorn store.wsgi:application
+web: bash start.sh
 
 
 
