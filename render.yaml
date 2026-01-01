@@ -3,7 +3,7 @@ services:
     name: ecommerce-store
     env: python
     plan: free
-    buildCommand: pip install -r requirements.txt && python manage.py migrate --noinput && python manage.py collectstatic --noinput
+    buildCommand: bash build.sh
     startCommand: python start.py
     envVars:
       - key: PYTHON_VERSION

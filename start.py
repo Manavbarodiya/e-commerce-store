@@ -25,6 +25,15 @@ def main():
         print(f"✗ ERROR: Migrations failed: {e}")
         sys.exit(1)
     
+    # Setup initial data (superuser and products)
+    print("Setting up initial data...")
+    try:
+        call_command('setup_data', verbosity=1)
+        print("✓ Initial data setup completed")
+    except Exception as e:
+        print(f"⚠ WARNING: Initial data setup failed: {e}")
+        # Continue anyway - don't exit
+    
     # Verify database
     print("Verifying database setup...")
     try:
