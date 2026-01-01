@@ -12,7 +12,8 @@ from .forms import UserRegistrationForm, LoginForm, CheckoutForm, SearchForm
 
 
 def index(request):
-    return render(request, 'index.html')
+    username = request.user.username if request.user.is_authenticated else None
+    return render(request, 'index.html', {'name': username})
 
 
 def about(request):

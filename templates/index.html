@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="{% static 'css/index.css' %}">
 
   <section class="hero">
-    <h2>Welcome {{name}} to Quick Basket</h2>
+    <h2>Welcome {% if name %}{{name}}{% else %}Guest{% endif %} to Quick Basket</h2>
     <p>Your one-stop shop for daily essentials, groceries, and more!</p>
   </section>
 
