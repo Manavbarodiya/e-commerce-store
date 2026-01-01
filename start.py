@@ -28,10 +28,20 @@ def main():
     # Setup initial data (superuser and products)
     print("Setting up initial data...")
     try:
-        call_command('setup_data', verbosity=1)
+        call_command('setup_data', verbosity=2)
         print("✓ Initial data setup completed")
+        
+        # Verify admin user was created/updated
+        from django.contrib.auth.models import User
+        admin = User.objects.filter(username='admin').first()
+        if admin:
+            print(f"✓ Admin user verified: username='{admin.username}', is_staff={admin.is_staff}, is_superuser={admin.is_superuser}")
+        else:
+            print("✗ WARNING: Admin user not found after setup!")
     except Exception as e:
+        import traceback
         print(f"⚠ WARNING: Initial data setup failed: {e}")
+        print(traceback.format_exc())
         # Continue anyway - don't exit
     
     # Verify database
