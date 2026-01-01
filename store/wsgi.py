@@ -16,7 +16,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'store.settings')
 # Get the WSGI application
 application = get_wsgi_application()
 
-# Fallback: Ensure migrations run on Render (ephemeral filesystem)
+# Fallback: Ensure migrations and initial data setup on Render (ephemeral filesystem)
 # This runs once when the WSGI application is loaded
 if os.path.exists('/opt/render/project/src'):
     try:
@@ -30,6 +30,20 @@ if os.path.exists('/opt/render/project/src'):
                 print("Running migrations from WSGI (auth_user table not found)...")
                 call_command('migrate', verbosity=1, interactive=False)
                 print("Migrations completed from WSGI")
+                
+                # Setup initial data (admin user and products)
+                print("Setting up initial data from WSGI...")
+                call_command('setup_data', verbosity=1)
+                print("Initial data setup completed from WSGI")
+            else:
+                # Table exists, but check if admin user exists
+                from django.contrib.auth.models import User
+                if not User.objects.filter(username='admin').exists():
+                    print("Admin user not found, running setup_data from WSGI...")
+                    call_command('setup_data', verbosity=1)
+                    print("Initial data setup completed from WSGI")
     except Exception as e:
-        print(f"Error running migrations from WSGI: {e}")
+        import traceback
+        print(f"Error in WSGI setup: {e}")
+        print(traceback.format_exc())
         # Continue anyway - let requests handle errors
