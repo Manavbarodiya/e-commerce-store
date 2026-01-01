@@ -1,0 +1,73 @@
+{% load static %}
+{%include "header.html"%}
+<link rel="stylesheet" href="{% static 'css/offers.css' %}">
+  <section class="offers-section">
+    <h2>Exclusive Offers for You 💰</h2>
+    <p>Save more every time you shop with Manav Kirana Store! Enjoy bank discounts, cashback, and exciting coupon codes.</p>
+
+    <div class="offers-grid">
+
+      <!-- Bank Offers -->
+      <div class="offer-card">
+        <img src="{% static 'image/hdfclogo.jpeg' %}" class="bank-logo" alt="HDFC Bank">
+        <h3>HDFC Bank Credit Card Offer</h3>
+        <p>Get <strong>10% instant discount</strong> up to ₹300 on a minimum purchase of ₹1500 using HDFC Bank Credit/Debit cards.</p>
+        <p><strong>Valid Till:</strong> 31st December 2025</p>
+      </div>
+
+      <div class="offer-card">
+        <img src="{% static 'image/icic.jpeg' %}" class="bank-logo" alt="ICICI Bank">
+        <h3>ICICI Bank SuperSaver Offer</h3>
+        <p>Flat ₹200 cashback on transactions above ₹1000 using ICICI Credit Cards.</p>
+        <p><strong>Use Code:</strong> <span class="coupon">ICICI200</span></p>
+      </div>
+
+      <div class="offer-card">
+        <img src="{% static 'image/sbi.jpeg' %}" class="bank-logo" alt="SBI Bank">
+        <h3>SBI YONO Users Offer</h3>
+        <p>Avail <strong>10% cashback</strong> on grocery orders through SBI YONO payments.</p>
+        <p><strong>Coupon Code:</strong> <span class="coupon">YONO10</span></p>
+      </div>
+
+      <!-- Coupon Codes -->
+      <div class="offer-card">
+        <h3>New User Welcome Offer</h3>
+        <p>Sign up today and get <strong>₹100 off</strong> on your first order.</p>
+        <p><strong>Coupon Code:</strong> <span class="coupon">WELCOME100</span></p>
+      </div>
+
+      <div class="offer-card">
+        <h3>Festive Mega Sale</h3>
+        <p>Enjoy <strong>15% OFF</strong> on all grocery items this Diwali season.</p>
+        <p><strong>Coupon Code:</strong> <span class="coupon">DIWALI15</span></p>
+      </div>
+
+      <div class="offer-card">
+        <h3>Free Delivery Offer</h3>
+        <p>Get <strong>Free Home Delivery</strong> on all orders above ₹500.</p>
+        <p>No coupon required!</p>
+      </div>
+
+      <!-- Special Store Offers -->
+      <div class="offer-card">
+        <h3>Weekend Saver</h3>
+        <p>Buy groceries worth ₹1000 or more and get a <strong>free 1L milk packet</strong>.</p>
+        <p><strong>Offer Valid:</strong> Every Saturday & Sunday</p>
+      </div>
+
+      <div class="offer-card">
+        <h3>Refer & Earn</h3>
+        <p>Refer your friends and earn ₹50 store credit for every successful referral.</p>
+        <p><strong>Coupon Code:</strong> <span class="coupon">REFER50</span></p>
+      </div>
+
+      <div class="offer-card">
+        <h3>Combo Offers</h3>
+        <p>Get up to <strong>25% off</strong> on family combo packs (rice, dal, oil, and sugar).</p>
+        <p><strong>Coupon Code:</strong> <span class="coupon">COMBO25</span></p>
+      </div>
+
+    </div>
+  </section>
+
+  {% include "footer.html"%}

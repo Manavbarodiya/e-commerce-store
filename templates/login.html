@@ -1,0 +1,56 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sign in — Manav Kirana</title>
+  <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+
+<body>
+
+  <main class="wrap">
+    <div class="logo">MK</div>
+    <h1>Manav Kirana</h1>
+    <p>User sign in to continue shopping.</p>
+
+    {% if messages %}
+      {% for message in messages %}
+        <p class="error-message">
+          {{ message }}
+        </p>
+      {% endfor %}
+    {% endif %}
+
+    <form method="POST">
+      {% csrf_token %}
+
+      {% if form.non_field_errors %}
+        <p class="error-message">{{ form.non_field_errors.0 }}</p>
+      {% endif %}
+
+      <label for="{{ form.username.id_for_label }}">Username</label>
+      {{ form.username }}
+      {% if form.username.errors %}
+        <p class="error-message">{{ form.username.errors.0 }}</p>
+      {% endif %}
+
+      <label for="{{ form.password.id_for_label }}">Password</label>
+      {{ form.password }}
+      {% if form.password.errors %}
+        <p class="error-message">{{ form.password.errors.0 }}</p>
+      {% endif %}
+
+      <button type="submit">Sign in</button>
+    </form>
+
+    <div class="bottom">
+       Don't have an account? <a href="{% url 'signup' %}">Create one</a>
+      <br>
+      Admin panel login? <a href="/admin/">Login</a>
+    </div>
+  </main>
+
+</body>
+</html>

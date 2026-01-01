@@ -1,0 +1,46 @@
+{% load static %}
+{% include "header.html" %}
+<link rel="stylesheet" href="{% static 'css/cart.css' %}"> 
+
+<div class="search-bar">
+  <a href="{% url 'cart' %}">
+    <button type="button">All Items</button>
+  </a>
+  <!-- make sure the act ion points to the search URL -->
+  <form method="GET" action="{% url 'search' %}">
+    <input type="text" name="query" value="{{ query|default:'' }}" placeholder="Search any product..." required />
+    <button type="submit">Search</button>
+  </form>
+
+</div>
+<div class="product-grid" id="productGrid">
+  {% if products %}
+  {% for product in products %}
+  <div class="product-card">
+
+    <h4>{{ product.name }}</h4>
+    <p>₹{{ product.price }} / {{ product.unit }}</p>
+
+    <div class="buttons">
+      <button type="button" class="add-btn" data-id="{{ product.id }}" data-name="{{ product.name }}"
+        data-price="{{ product.price }}">
+        Add
+      </button>
+
+      <button type="button" class="remove-btn" style="display:none;" data-id="{{ product.id }}">
+        Remove
+      </button>
+    </div>
+
+  </div>
+  {% endfor %}
+  {% else %}
+  <div class="no-products">
+    <h3>Sorry "<u>{{query}}</u>" is Out of Stock!!!</h3>
+    <p>Try searching for something else or <a href="{% url 'cart' %}">view all products</a>.</p>
+  </div>
+  {% endif %}
+</div>
+
+
+{% include "footer.html" %}

@@ -1,0 +1,77 @@
+{% load static %}
+{% include "header.html" %}
+<link rel="stylesheet" href="{% static 'css/order_confirmation.css' %}">
+
+<div class="confirmation-container">
+  <div class="confirmation-card">
+    <div class="success-icon">✓</div>
+    <h2>Order Confirmed!</h2>
+    <p class="success-message">Thank you for your order. We've received your order and will process it soon.</p>
+
+    <div class="order-details">
+      <h3>Order Details</h3>
+      
+      <div class="detail-row">
+        <span class="label">Order ID:</span>
+        <span class="value">#{{ order.id }}</span>
+      </div>
+      
+      <div class="detail-row">
+        <span class="label">Order Date:</span>
+        <span class="value">{{ order.order_date|date:"F d, Y g:i A" }}</span>
+      </div>
+      
+      <div class="detail-row">
+        <span class="label">Total Amount:</span>
+        <span class="value amount">₹{{ order.total_amount }}</span>
+      </div>
+      
+      <div class="detail-row">
+        <span class="label">Status:</span>
+        <span class="value status">{{ order.get_status_display }}</span>
+      </div>
+    </div>
+
+    <div class="order-items">
+      <h3>Order Items</h3>
+      <table class="items-table">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Subtotal</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in order.items.all %}
+          <tr>
+            <td>{{ item.product.name }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>₹{{ item.price }}</td>
+            <td>₹{{ item.subtotal }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="shipping-info">
+      <h3>Shipping Information</h3>
+      <div class="info-box">
+        <p><strong>Address:</strong> {{ order.shipping_address }}</p>
+        <p><strong>Contact:</strong> {{ order.contact_number }}</p>
+      </div>
+    </div>
+
+    <div class="action-buttons">
+      <a href="{% url 'order_history' %}" class="btn btn-primary">View Order History</a>
+      <a href="{% url 'cart' %}" class="btn btn-secondary">Continue Shopping</a>
+    </div>
+  </div>
+</div>
+
+<script src="{% static 'js/order_confirmation.js' %}"></script>
+
+{% include "footer.html" %}
+

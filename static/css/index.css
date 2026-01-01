@@ -1,0 +1,67 @@
+/* Index Page Styles */
+
+.hero {
+  text-align: center;
+  padding: 100px 20px 60px;
+}
+
+.hero h2 {
+  font-size: 2.5rem;
+  color: #00ffc3;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  color: #bbb;
+  font-size: 1.1rem;
+}
+
+.categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  padding: 50px 80px;
+}
+
+.card {
+  background: #1b1b1b;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,255,195,0.3);
+}
+
+.card img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+}
+
+.card h3 {
+  padding: 15px;
+  font-size: 1.2rem;
+  color: #00ffc3;
+}
+
+.card p {
+  padding: 0 15px 20px;
+  color: #bbb;
+  font-size: 0.95rem;
+}
+
+.card-link {
+  text-decoration: none;
+}
+
+@media (max-width: 600px) {
+  .categories {
+    padding: 30px 20px;
+  }
+}
+

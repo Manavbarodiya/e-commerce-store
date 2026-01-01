@@ -1,0 +1,251 @@
+/* Order History Page Styles */
+
+.order-history-container {
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+.order-history-container h2 {
+  color: #00ffc3;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2rem;
+}
+
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.order-card {
+  background: #1b1b1b;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.order-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 255, 195, 0.2);
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #333;
+}
+
+.order-info h3 {
+  color: #00ffc3;
+  margin: 0 0 5px 0;
+  font-size: 1.4rem;
+}
+
+.order-date {
+  color: #999;
+  font-size: 0.9rem;
+}
+
+.order-status {
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.status-pending {
+  background: rgba(255, 193, 7, 0.2);
+  color: #ffc107;
+  border: 1px solid #ffc107;
+}
+
+.status-confirmed {
+  background: rgba(0, 255, 195, 0.2);
+  color: #00ffc3;
+  border: 1px solid #00ffc3;
+}
+
+.status-shipped {
+  background: rgba(33, 150, 243, 0.2);
+  color: #2196f3;
+  border: 1px solid #2196f3;
+}
+
+.status-delivered {
+  background: rgba(76, 175, 80, 0.2);
+  color: #4caf50;
+  border: 1px solid #4caf50;
+}
+
+.status-cancelled {
+  background: rgba(244, 67, 54, 0.2);
+  color: #f44336;
+  border: 1px solid #f44336;
+}
+
+.order-body {
+  margin-bottom: 20px;
+}
+
+.order-items-preview {
+  margin-bottom: 15px;
+  color: #ccc;
+}
+
+.order-items-preview strong {
+  color: #00ffc3;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.order-items-preview ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  padding-left: 15px;
+}
+
+.order-items-preview li {
+  color: #999;
+  margin-bottom: 5px;
+  position: relative;
+}
+
+.order-items-preview li:before {
+  content: "•";
+  color: #00ffc3;
+  position: absolute;
+  left: -15px;
+}
+
+.order-items-preview li.more-items {
+  color: #666;
+  font-style: italic;
+}
+
+.order-details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background: #141414;
+  border-radius: 8px;
+}
+
+.detail-label {
+  color: #999;
+  font-size: 0.9rem;
+}
+
+.detail-value {
+  color: #fff;
+  font-weight: 600;
+}
+
+.shipping-address {
+  background: #141414;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 15px;
+}
+
+.shipping-address strong {
+  color: #00ffc3;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.shipping-address p {
+  color: #ccc;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.order-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 15px;
+  border-top: 1px solid #333;
+}
+
+.view-details-btn {
+  padding: 10px 25px;
+  background: linear-gradient(135deg, #00ffc3, #00cfa1);
+  color: #111;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.view-details-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 255, 195, 0.4);
+}
+
+.no-orders {
+  text-align: center;
+  padding: 60px 20px;
+  background: #1b1b1b;
+  border-radius: 15px;
+  color: #ccc;
+}
+
+.no-orders-icon {
+  font-size: 80px;
+  margin-bottom: 20px;
+}
+
+.no-orders h3 {
+  color: #00ffc3;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.no-orders p {
+  color: #999;
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+}
+
+.btn-shopping {
+  display: inline-block;
+  padding: 12px 30px;
+  background: linear-gradient(135deg, #00ffc3, #00cfa1);
+  color: #111;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn-shopping:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 255, 195, 0.4);
+}
+
+@media (max-width: 600px) {
+  .order-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .order-details-grid {
+    grid-template-columns: 1fr;
+  }
+}
+

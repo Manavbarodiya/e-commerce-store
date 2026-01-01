@@ -1,0 +1,78 @@
+{% load static %}
+{% include "header.html" %}
+
+<link rel="stylesheet" href="{% static 'css/checkout.css' %}">
+
+<div class="checkout-container">
+  <h2>Checkout</h2>
+
+  {% if messages %}
+    {% for message in messages %}
+      <div class="error-message">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+
+  {% if form.non_field_errors %}
+    <div class="error-message">{{ form.non_field_errors.0 }}</div>
+  {% endif %}
+
+  <form method="POST" id="checkoutForm" action="{% url 'checkout' %}">
+    {% csrf_token %}
+    
+    <input type="hidden" name="cart_data" id="cartDataInput">
+
+    <div class="checkout-section">
+      <h3>Order Summary</h3>
+      <table class="checkout-table">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Qty</th>
+            <th>Price (₹)</th>
+            <th>Subtotal (₹)</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="checkoutBody">
+          <!-- Rows will be added by JS -->
+        </tbody>
+      </table>
+
+      <div class="checkout-total">
+        <span>Total Bill:</span>
+        <span>₹<span id="totalAmount">0</span></span>
+      </div>
+    </div>
+
+    <div class="checkout-section">
+      <h3>Shipping Information</h3>
+      <div class="form-group">
+        <label for="{{ form.shipping_address.id_for_label }}">Shipping Address *</label>
+        {{ form.shipping_address }}
+        {% if form.shipping_address.help_text %}
+          <small style="color: #999; font-size: 0.85rem;">{{ form.shipping_address.help_text }}</small>
+        {% endif %}
+        {% if form.shipping_address.errors %}
+          <div class="error-message" style="margin-top: 5px;">{{ form.shipping_address.errors.0 }}</div>
+        {% endif %}
+      </div>
+
+      <div class="form-group">
+        <label for="{{ form.contact_number.id_for_label }}">Contact Number *</label>
+        {{ form.contact_number }}
+        {% if form.contact_number.help_text %}
+          <small style="color: #999; font-size: 0.85rem;">{{ form.contact_number.help_text }}</small>
+        {% endif %}
+        {% if form.contact_number.errors %}
+          <div class="error-message" style="margin-top: 5px;">{{ form.contact_number.errors.0 }}</div>
+        {% endif %}
+      </div>
+    </div>
+
+    <button type="submit" class="place-order-btn" id="placeOrderBtn">Place Order</button>
+  </form>
+</div>
+
+<script src="{% static 'js/checkout.js' %}"></script>
+
+{% include "footer.html" %}
