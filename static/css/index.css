@@ -2,7 +2,46 @@
 
 .hero {
   text-align: center;
-  padding: 100px 20px 60px;
+  padding: 40px 20px 60px;
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.hero-actions a {
+  text-decoration: none;
+}
+
+.action-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  background: #1a1a1a;
+  color: #f2f2f2;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+}
+
+.action-btn:hover {
+  background: #2a2a2a;
+  color: #00ffc3;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0,255,195,0.3);
+}
+
+.action-btn:active {
+  transform: scale(0.98);
+  box-shadow: none;
 }
 
 .hero h2 {
