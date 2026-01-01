@@ -1,4 +1,4 @@
-# Manav Kirana Store
+# Quick Basket Store
 
 A simple e-commerce website built with Django.
 
