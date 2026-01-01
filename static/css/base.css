@@ -39,11 +39,17 @@ header h1:hover {
   text-decoration: none;
 }
 
+nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
 nav a {
   text-decoration: none;
   color: #ccc;
-  margin-left: 25px;
   transition: 0.3s;
+  white-space: nowrap;
 }
 
 nav a:hover {
@@ -58,8 +64,10 @@ footer {
 
 /* Search Bar Styles */
 .search-bar {
-  text-align: center;
-  padding: 30px 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 20px;
 }
 
 .search-bar input {
@@ -79,15 +87,20 @@ footer {
   box-shadow: 0 0 8px #00ffc3;
 }
 
+.search-bar a {
+  margin-left: 0;
+}
+
 .search-bar button {
-  padding: 10px 20px;
+  padding: 8px 16px;
   border: none;
-  border-radius: 40%;
-  background: #111;
+  border-radius: 6px;
+  background: #1a1a1a;
   color: #f2f2f2;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 500;
   cursor: pointer;
+  white-space: nowrap;
   transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
 }
 
@@ -156,13 +169,28 @@ footer {
 }
 
 /* Responsive */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   header {
     flex-direction: column;
-    text-align: center;
+    padding: 20px;
   }
+  
   nav {
-    margin-top: 10px;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 15px;
+    width: 100%;
+  }
+  
+  .search-bar {
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+  
+  nav > a {
+    text-align: center;
   }
 }
 
