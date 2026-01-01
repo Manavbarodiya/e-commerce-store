@@ -15,7 +15,7 @@ Netlify is for **static sites only** (HTML, CSS, JavaScript). Django is a **Pyth
 3. Configure:
    - **Name**: ecommerce-store (or any name)
    - **Environment**: Python 3
-   - **Build Command**: `pip install -r requirements.txt && python manage.py collectstatic --noinput`
+   - **Build Command**: `pip install -r requirements.txt && python manage.py migrate && python manage.py collectstatic --noinput`
    - **Start Command**: `gunicorn store.wsgi:application`
 4. Click "Create Web Service"
 
