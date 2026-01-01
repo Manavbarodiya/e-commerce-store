@@ -3,8 +3,8 @@ services:
     name: ecommerce-store
     env: python
     plan: free
-    buildCommand: pip install -r requirements.txt && python manage.py migrate && python manage.py collectstatic --noinput
-    startCommand: gunicorn store.wsgi:application
+    buildCommand: pip install -r requirements.txt && python manage.py migrate --noinput && python manage.py collectstatic --noinput
+    startCommand: bash start.sh
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.7
@@ -13,5 +13,5 @@ services:
       - key: DEBUG
         value: False
       - key: ALLOWED_HOSTS
-        value: ecommerce-store-manavkirana.onrender.com
+        value: e-commerce-store-2bqi.onrender.com
 
