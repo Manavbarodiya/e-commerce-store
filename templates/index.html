@@ -3,16 +3,6 @@
 <link rel="stylesheet" href="{% static 'css/index.css' %}">
 
   <section class="hero">
-    <div class="hero-actions">
-      {% if user.is_authenticated %}
-        <a href="{% url 'checkout' %}"><button type="button" class="action-btn">Check Out</button></a>
-        <a href="{% url 'order_history' %}"><button type="button" class="action-btn">My Orders</button></a>
-        <a href="{% url 'signout' %}"><button type="button" class="action-btn">Sign Out</button></a>
-      {% else %}
-        <a href="{% url 'login' %}"><button type="button" class="action-btn">Sign In</button></a>
-        <a href="{% url 'signup' %}"><button type="button" class="action-btn">Sign Up</button></a>
-      {% endif %}
-    </div>
     <h2>Welcome {% if name %}{{name}}{% else %}Guest{% endif %} to Quick Basket</h2>
     <p>Your one-stop shop for daily essentials, groceries, and more!</p>
   </section>

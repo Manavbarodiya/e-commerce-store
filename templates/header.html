@@ -15,6 +15,18 @@
     </a>
     
     <nav>
+      {% if user.is_authenticated %}
+      <div class="search-bar">
+        <a href="{% url 'checkout' %}"><button type="button">Check Out</button></a>
+        <a href="{% url 'order_history' %}"><button type="button">My Orders</button></a>
+        <a href="{% url 'signout' %}"><button type="button">Sign Out</button></a>
+      </div>
+      {% else %}
+      <div class="search-bar">
+        <a href="{% url 'login' %}"><button type="button">Sign In</button></a>
+        <a href="{% url 'signup' %}"><button type="button">Sign Up</button></a>
+      </div>
+      {% endif %}
       <a href="{% url 'index' %}">Home</a>
       <a href="{% url 'cart' %}">Inventory</a>
       <a href="{% url 'offers' %}">Offers</a>

@@ -42,7 +42,7 @@ header h1:hover {
 nav {
   display: flex;
   align-items: center;
-  gap: 25px;
+  gap: 20px;
 }
 
 nav a {
@@ -50,11 +50,10 @@ nav a {
   color: #ccc;
   transition: 0.3s;
   white-space: nowrap;
-  font-size: 15px;
 }
 
 nav a:hover {
-  color: #00ffc3;
+  color: #ffffff;
 }
 
 /* Footer Styles - Basic structure, detailed styles in footer.css */
