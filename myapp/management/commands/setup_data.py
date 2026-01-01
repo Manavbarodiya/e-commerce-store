@@ -7,16 +7,27 @@ class Command(BaseCommand):
     help = 'Creates superuser and initial products'
 
     def handle(self, *args, **options):
-        # Create superuser if it doesn't exist
-        if not User.objects.filter(username='admin').exists():
-            User.objects.create_superuser(
-                username='admin',
-                email='admin@quickbasket.com',
-                password='admin'
-            )
+        # Create or update superuser
+        admin_user, created = User.objects.get_or_create(
+            username='admin',
+            defaults={
+                'email': 'admin@quickbasket.com',
+                'is_staff': True,
+                'is_superuser': True,
+            }
+        )
+        
+        # Always set the password to 'admin' (in case user already existed)
+        admin_user.set_password('admin')
+        admin_user.is_staff = True
+        admin_user.is_superuser = True
+        admin_user.email = 'admin@quickbasket.com'
+        admin_user.save()
+        
+        if created:
             self.stdout.write(self.style.SUCCESS('Superuser created: admin/admin'))
         else:
-            self.stdout.write('Superuser already exists')
+            self.stdout.write(self.style.SUCCESS('Superuser password updated: admin/admin'))
 
         # Create sample products if they don't exist
         products_data = [
