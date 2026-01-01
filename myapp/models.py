@@ -3,9 +3,21 @@ from django.contrib.auth.models import User
 from decimal import Decimal
 
 class Product(models.Model):
+    CATEGORY_CHOICES = [
+        ('groceries', 'Groceries'),
+        ('hygiene', 'Hygiene & Personal Care'),
+        ('snacks', 'Snacks'),
+        ('electronics', 'Electronic Products'),
+        ('drawing', 'Drawing & Painting'),
+        ('frozen', 'Frozen Food'),
+        ('wellness', 'Sexual Wellness Products'),
+        ('medical', 'Medical Products'),
+    ]
+    
     name = models.CharField(max_length=100)
     price = models.DecimalField(max_digits=8, decimal_places=2)
     unit = models.CharField(max_length=50, help_text="e.g. kg, litre, packet")
+    category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, default='groceries')
 
     def __str__(self):
         return self.name

@@ -25,27 +25,38 @@ def offers(request):
 
 
 def cart(request):
-    products = Product.objects.all()
-    return render(request, 'cart.html', {'products': products})
+    category = request.GET.get('category', None)
+    if category:
+        products = Product.objects.filter(category=category)
+    else:
+        products = Product.objects.all()
+    return render(request, 'cart.html', {'products': products, 'category': category})
 
 
 def search(request):
     form = SearchForm(request.GET)
     products = Product.objects.none()
     query = ''
+    category = request.GET.get('category', None)
 
     if form.is_valid():
         query = form.cleaned_data.get('query', '').strip()
         if query:
             products = Product.objects.filter(Q(name__icontains=query))
+            if category:
+                products = products.filter(category=category)
         else:
-            products = Product.objects.all()
+            if category:
+                products = Product.objects.filter(category=category)
+            else:
+                products = Product.objects.all()
 
     context = {
         'products': products,
         'query': query,
         'count': products.count(),
         'form': form,
+        'category': category,
     }
     return render(request, 'cart.html', context)
 
