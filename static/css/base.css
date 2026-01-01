@@ -42,17 +42,21 @@ header h1:hover {
 nav {
   display: flex;
   align-items: center;
-  gap: 20px;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  margin-left: 40px;
 }
 
-nav a {
+nav > a {
   text-decoration: none;
   color: #ccc;
   transition: 0.3s;
   white-space: nowrap;
+  margin-right: 25px;
 }
 
-nav a:hover {
+nav > a:hover {
   color: #ffffff;
 }
 
@@ -62,12 +66,12 @@ footer {
   color: #ccc;
 }
 
-/* Search Bar Styles */
+/* Search Bar Styles (Action Buttons) */
 .search-bar {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-right: 20px;
+  margin-left: auto;
 }
 
 .search-bar input {
