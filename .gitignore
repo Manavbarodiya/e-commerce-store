@@ -102,3 +102,10 @@ dmypy.json
 AppData/
 Desktop/
 
+# Unnecessary files (keep locally, don't commit)
+static/image/*.exe
+static/image/*.pdf
+PROJECT_GUIDE.md
+DEPLOYMENT.md
+start.sh
+
