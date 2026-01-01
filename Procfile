@@ -1,4 +1,4 @@
-web: bash start.sh
+web: python start.py
 
 
 
