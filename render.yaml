@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: ecommerce-store
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt && python manage.py collectstatic --noinput
+    startCommand: gunicorn store.wsgi:application
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.7
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: False
+      - key: ALLOWED_HOSTS
+        value: ecommerce-store-manavkirana.onrender.com
+
