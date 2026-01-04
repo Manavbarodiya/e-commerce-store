@@ -21,6 +21,8 @@
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 25px;
   padding: 50px 80px;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .card {
@@ -59,9 +61,30 @@
   text-decoration: none;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+  .hero {
+    padding: 60px 20px 40px;
+  }
+  
+  .hero h2 {
+    font-size: 2rem;
+  }
+  
   .categories {
     padding: 30px 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h2 {
+    font-size: 1.5rem;
+  }
+  
+  .categories {
+    grid-template-columns: 1fr;
+    padding: 20px 15px;
   }
 }
 

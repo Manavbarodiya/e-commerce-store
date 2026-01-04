@@ -16,16 +16,16 @@ class OrderItemInline(admin.TabularInline):
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('id', 'user', 'order_date', 'total_amount', 'status', 'contact_number')
-    list_filter = ('status', 'order_date', 'created_at')
+    list_display = ('id', 'user', 'created_at', 'total_amount', 'status', 'contact_number')
+    list_filter = ('status', 'created_at')
     search_fields = ('id', 'user__username', 'contact_number', 'shipping_address')
-    readonly_fields = ('order_date', 'created_at', 'updated_at')
+    readonly_fields = ('created_at', 'updated_at')
     inlines = [OrderItemInline]
-    date_hierarchy = 'order_date'
+    date_hierarchy = 'created_at'
     
     fieldsets = (
         ('Order Information', {
-            'fields': ('user', 'order_date', 'status', 'total_amount')
+            'fields': ('user', 'status', 'total_amount')
         }),
         ('Shipping Information', {
             'fields': ('shipping_address', 'contact_number')
@@ -40,6 +40,6 @@ class OrderAdmin(admin.ModelAdmin):
 @admin.register(OrderItem)
 class OrderItemAdmin(admin.ModelAdmin):
     list_display = ('id', 'order', 'product', 'quantity', 'price', 'subtotal')
-    list_filter = ('order__status', 'order__order_date')
+    list_filter = ('order__status', 'order__created_at')
     search_fields = ('order__id', 'product__name')
     readonly_fields = ('subtotal',)    
